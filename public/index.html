@@ -24,6 +24,10 @@
             console.log('Conectado al servidor');
         });
 
+        socket.on('disconnect', () => {
+            console.log('Conexión perdida con el servidor');
+        });
+
     </script>
 
 </html>
