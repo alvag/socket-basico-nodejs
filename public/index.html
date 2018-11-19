@@ -28,6 +28,11 @@
             console.log('Conexión perdida con el servidor');
         });
 
+        socket.emit('sendMessage', {
+            user: 'Max Alva',
+            messaje: 'Hello World'
+        });
+
     </script>
 
 </html>

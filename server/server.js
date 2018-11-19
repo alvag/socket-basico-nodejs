@@ -24,6 +24,10 @@ io.on('connection', (client) => {
     client.on('disconnect', () => {
         console.log('Usuario desconectado');
     });
+
+    client.on('sendMessage', (message) => {
+        console.log(message);
+    });
 });
 
 server.listen(process.env.PORT, (error) => {
