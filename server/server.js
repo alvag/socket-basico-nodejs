@@ -1,8 +1,11 @@
 const path = require('path');
 require('dotenv').config();
-
+const socketIO = require('socket.io');
+const http = require('http');
 const express = require('express');
 const app = express();
+
+let server = http.createServer(app);
 
 const bodyParser = require('body-parser');
 
@@ -13,7 +16,16 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 
 app.use(require('./routes/'));
 
-app.listen(process.env.PORT, () => {
+let io = socketIO(server);
+
+io.on('connection', (client) => {
+    console.log('Usuario conectado');
+});
+
+server.listen(process.env.PORT, (error) => {
+
+    if (error) throw new Error(error);
+
     // eslint-disable-next-line no-console
     console.log(`Servidor corriendo en el puerto ${process.env.PORT}.`);
 });
