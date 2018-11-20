@@ -33,6 +33,10 @@
             messaje: 'Hello World'
         });
 
+        socket.on('sendMessage', (message) => {
+            console.log('Servidor:', message);
+        });
+
     </script>
 
 </html>
