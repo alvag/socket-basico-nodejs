@@ -30,8 +30,18 @@ io.on('connection', (client) => {
         console.log('Usuario desconectado');
     });
 
-    client.on('sendMessage', (message) => {
+    client.on('sendMessage', (message, callback) => {
         console.log(message);
+
+        if (message.user) {
+            callback({
+                response: 'Todo salió bien'
+            });
+        } else {
+            callback({
+                response: 'Todo salió mal'
+            });
+        }
     });
 });
 
