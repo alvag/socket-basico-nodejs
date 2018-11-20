@@ -15,7 +15,9 @@ io.on('connection', (client) => {
     client.on('sendMessage', (message, callback) => {
         console.log(message);
 
-        if (message.user) {
+        client.broadcast.emit('sendMessage', message);
+
+        /* if (message.user) {
             callback({
                 response: 'Todo salió bien'
             });
@@ -23,6 +25,6 @@ io.on('connection', (client) => {
             callback({
                 response: 'Todo salió mal'
             });
-        }
+        } */
     });
 });
